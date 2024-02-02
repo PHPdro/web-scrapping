@@ -504,6 +504,8 @@ class AdfnvSpider(scrapy.Spider):
             maximo = float(maximo)
             ff_anterior = float(ff_anterior)
             percentual = ((maximo / ff_anterior) - 1) * 100
+            insert = f"INSERT INTO `tb_empresa` (`EMPRESA`) VALUES ('{empresa}')"
+            self.cursor.execute(insert)
         else:
             insert = f"INSERT INTO `tb_empresa` (`EMPRESA`) VALUES ('{empresa}')"
             self.cursor.execute(insert)

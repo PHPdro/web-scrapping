@@ -31,6 +31,7 @@ services:
       - MYSQL_ROOT_PASSWORD=admin
       - PMA_HOST=mysql
       - TZ=America/Maceio
+      - UPLOAD_LIMIT=300M
     ports:
       - '9090:80'
     depends_on:
@@ -38,7 +39,7 @@ services:
     networks:
       - traefik-public
     #     - interna
-    restart: unless-stopped
+#    restart: unless-stopped
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-public
