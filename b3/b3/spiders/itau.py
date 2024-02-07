@@ -514,11 +514,14 @@ class ItauSpider(scrapy.Spider):
             delete = f"DELETE FROM `tb_cotacao` WHERE DATA = '{data}';"
             self.cursor.execute(delete)
 
+        # insert_empresas = f"INSERT INTO `tb_empresa` (`EMPRESA`) VALUES ('{empresa}')"
+
         insert = f"INSERT INTO `tb_cotacao` (`EMPRESA`, `ABERTURA`, `MAXIMO`, `MINIMO`, `FECHAMENTO`, " \
                  f"`FECHAMENTO_ANTERIOR`, `DATA`, `VOLUME_FINANCEIRO`, `VOLUME_ACOES`, `VOLUME_NEGOCIOS`, `VARIACAO`, `PERCENTUAL`)" \
                  f" VALUES ('{empresa}','{abertura}','{maximo}','{minimo}','{fechamento}'," \
                  f"'{ff_anterior}','{data}','{volume_financeiro}','{volume_acoes}','{volume_negocios}','{variacao}', '{percentual}')"
 
+        # self.cursor.execute(insert_empresas)
         self.cursor.execute(insert)
         self.connection.commit()
         self.counter += 1
